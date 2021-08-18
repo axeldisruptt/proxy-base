@@ -1,7 +1,7 @@
 package com.redhat;
 
-import com.redhat.dto.Customer;
-import com.redhat.dto.CustomerSuccess;
+//import com.redhat.dto.Customer;
+//import com.redhat.dto.CustomerSuccess;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.rest.RestBindingMode;
@@ -20,10 +20,10 @@ public class Routes extends RouteBuilder {
     rest()
       .path("/").consumes("application/json").produces("application/json")
         .put("/customer")
-          .type(Customer.class).outType(CustomerSuccess.class)
+//          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:put-customer")
         .post("/customer")
-          .type(Customer.class).outType(CustomerSuccess.class)
+//          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:post-customer");
     
     from("direct:post-customer")
@@ -36,15 +36,15 @@ public class Routes extends RouteBuilder {
     from("direct:request")
       .setHeader("backend", simple("{{redhat.backend}}"))
       .to("log:DEBUG?showBody=true&showHeaders=true")
-      .toD("http://${header.backend}/customer?bridgeEndpoint=true&throwExceptionOnFailure=false")
-      .to("log:DEBUG?showBody=true&showHeaders=true")
+      .toD("http://${header.backend}?bridgeEndpoint=true&throwExceptionOnFailure=false")
+      .to("log:DEBUG?showBody=true&showHeaders=true");
       
-      .choice()
-        .when(simple("${header.CamelHttpResponseCode} != 201 && ${header.CamelHttpResponseCode} != 202"))
-          .log("err")
-          .transform(constant("Error"))
-        .otherwise()
-          .log("ok")
-      .endChoice();
+//      .choice()
+//        .when(simple("${header.CamelHttpResponseCode} != 201 && ${header.CamelHttpResponseCode} != 202"))
+//          .log("err")
+//          .transform(constant("Error"))
+//        .otherwise()
+//          .log("ok")
+//      .endChoice();
   }
 }

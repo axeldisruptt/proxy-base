@@ -1,7 +1,7 @@
 
 camel:
   springboot:
-    name: fuse-rest-rh
+    name: ${SERVICE_NAME}
     main-run-controller: true
 
 server:
