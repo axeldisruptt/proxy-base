@@ -6,7 +6,7 @@ items:
   kind: Service
   metadata:
     annotations:
-      fabric8.io/git-commit: 459de79ebc6a72a586d30f83d9221c6878ab4664
+      fabric8.io/git-commit: 0e0366c868ca037a9e84136bcb1c9880ac5d4a92
       fabric8.io/iconUrl: img/icons/camel.svg
       fabric8.io/git-branch: prd-supplier-interface
     labels:
@@ -30,7 +30,7 @@ items:
   kind: Deployment
   metadata:
     annotations:
-      fabric8.io/git-commit: 459de79ebc6a72a586d30f83d9221c6878ab4664
+      fabric8.io/git-commit: 0e0366c868ca037a9e84136bcb1c9880ac5d4a92
       fabric8.io/iconUrl: img/icons/camel.svg
       fabric8.io/git-branch: prd-supplier-interface
       fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=i-disa-prd-supplier-interface&var-version=0.1.0
@@ -51,7 +51,7 @@ items:
     template:
       metadata:
         annotations:
-          fabric8.io/git-commit: 459de79ebc6a72a586d30f83d9221c6878ab4664
+          fabric8.io/git-commit: 0e0366c868ca037a9e84136bcb1c9880ac5d4a92
           fabric8.io/iconUrl: img/icons/camel.svg
           fabric8.io/git-branch: prd-supplier-interface
           fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=i-disa-prd-supplier-interface&var-version=0.1.0
