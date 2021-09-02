@@ -1,0 +1,122 @@
+{
+  "apiVersion" : "v1",
+  "kind" : "List",
+  "items" : [ {
+    "apiVersion" : "v1",
+    "kind" : "Service",
+    "metadata" : {
+      "annotations" : {
+        "fabric8.io/git-commit" : "eef7da7c321e535fc2cb563176fd22be924be796",
+        "fabric8.io/iconUrl" : "img/icons/camel.svg",
+        "fabric8.io/git-branch" : "inventory-detail-interface"
+      },
+      "labels" : {
+        "expose" : "true",
+        "app" : "i-disa-prd-inventory-detail-interface",
+        "provider" : "fabric8",
+        "version" : "0.1.0",
+        "group" : "com.redhat"
+      },
+      "name" : "i-disa-prd-inventory-detail-interface"
+    },
+    "spec" : {
+      "ports" : [ {
+        "name" : "http",
+        "port" : 8080,
+        "protocol" : "TCP",
+        "targetPort" : 8080
+      } ],
+      "selector" : {
+        "app" : "i-disa-prd-inventory-detail-interface",
+        "provider" : "fabric8",
+        "group" : "com.redhat"
+      }
+    }
+  }, {
+    "apiVersion" : "extensions/v1beta1",
+    "kind" : "Deployment",
+    "metadata" : {
+      "annotations" : {
+        "fabric8.io/git-commit" : "eef7da7c321e535fc2cb563176fd22be924be796",
+        "fabric8.io/iconUrl" : "img/icons/camel.svg",
+        "fabric8.io/git-branch" : "inventory-detail-interface",
+        "fabric8.io/metrics-path" : "dashboard/file/camel-routes.json/?var-project=i-disa-prd-inventory-detail-interface&var-version=0.1.0"
+      },
+      "labels" : {
+        "app" : "i-disa-prd-inventory-detail-interface",
+        "provider" : "fabric8",
+        "version" : "0.1.0",
+        "group" : "com.redhat"
+      },
+      "name" : "i-disa-prd-inventory-detail-interface"
+    },
+    "spec" : {
+      "replicas" : 1,
+      "revisionHistoryLimit" : 2,
+      "selector" : {
+        "matchLabels" : {
+          "app" : "i-disa-prd-inventory-detail-interface",
+          "provider" : "fabric8",
+          "group" : "com.redhat"
+        }
+      },
+      "template" : {
+        "metadata" : {
+          "annotations" : {
+            "fabric8.io/git-commit" : "eef7da7c321e535fc2cb563176fd22be924be796",
+            "fabric8.io/iconUrl" : "img/icons/camel.svg",
+            "fabric8.io/git-branch" : "inventory-detail-interface",
+            "fabric8.io/metrics-path" : "dashboard/file/camel-routes.json/?var-project=i-disa-prd-inventory-detail-interface&var-version=0.1.0"
+          },
+          "labels" : {
+            "app" : "i-disa-prd-inventory-detail-interface",
+            "provider" : "fabric8",
+            "version" : "0.1.0",
+            "group" : "com.redhat"
+          }
+        },
+        "spec" : {
+          "containers" : [ {
+            "env" : [ {
+              "name" : "SPRING_APPLICATION_JSON",
+              "value" : "{\"server\":{\"tomcat\":{\"max-threads\":1}}}"
+            }, {
+              "name" : "JAVA_APP_JAR",
+              "value" : "i-disa-prd-inventory-detail-interface-0.1.0.jar"
+            }, {
+              "name" : "KUBERNETES_NAMESPACE",
+              "valueFrom" : {
+                "fieldRef" : {
+                  "fieldPath" : "metadata.namespace"
+                }
+              }
+            } ],
+            "image" : "i-disa-prd-inventory-detail-interface:0.1.0",
+            "imagePullPolicy" : "IfNotPresent",
+            "name" : "i-disa-prd-inventory-detail-interface",
+            "ports" : [ {
+              "containerPort" : 8080,
+              "name" : "http",
+              "protocol" : "TCP"
+            }, {
+              "containerPort" : 8081,
+              "name" : "sunproxyadmin",
+              "protocol" : "TCP"
+            } ],
+            "resources" : {
+              "limits" : {
+                "cpu" : "1.0"
+              },
+              "requests" : {
+                "cpu" : "0.2"
+              }
+            },
+            "securityContext" : {
+              "privileged" : false
+            }
+          } ]
+        }
+      }
+    }
+  } ]
+}
