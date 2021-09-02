@@ -3,7 +3,7 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   annotations:
-    fabric8.io/git-commit: 459de79ebc6a72a586d30f83d9221c6878ab4664
+    fabric8.io/git-commit: 65b551e9b34643695ff4ca57e38759f8ec7a7a6b
     fabric8.io/iconUrl: img/icons/camel.svg
     fabric8.io/git-branch: prd-customer-interface
     fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=i-disa-prd-customer-interface&var-version=0.1.0
@@ -27,7 +27,7 @@ spec:
   template:
     metadata:
       annotations:
-        fabric8.io/git-commit: 459de79ebc6a72a586d30f83d9221c6878ab4664
+        fabric8.io/git-commit: 65b551e9b34643695ff4ca57e38759f8ec7a7a6b
         fabric8.io/iconUrl: img/icons/camel.svg
         fabric8.io/git-branch: prd-customer-interface
         fabric8.io/metrics-path: dashboard/file/camel-routes.json/?var-project=i-disa-prd-customer-interface&var-version=0.1.0

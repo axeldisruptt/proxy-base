@@ -19,10 +19,10 @@ public class Routes extends RouteBuilder {
     
     rest()
       .path("/").consumes("application/json").produces("application/json")
-        .put("/customer-interface")
+        .put("/customer")
 //          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:put-customer")
-        .post("/customer-interface")
+        .post("/customer")
 //          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:post-customer");
     
