@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    fabric8.io/git-commit: 65b551e9b34643695ff4ca57e38759f8ec7a7a6b
+    fabric8.io/git-commit: c448fc61b901ec7a47f1f39485f025979f9ac78e
     fabric8.io/iconUrl: img/icons/camel.svg
     fabric8.io/git-branch: prd-customer-interface
   labels:
