@@ -19,10 +19,10 @@ public class Routes extends RouteBuilder {
     
     rest()
       .path("/").consumes("application/json").produces("application/json")
-        .put("/material-list")
+        .put("/supplier")
 //          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:put-customer")
-        .post("/material-list")
+        .post("/supplier")
 //          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:post-customer");
     
@@ -35,9 +35,9 @@ public class Routes extends RouteBuilder {
 
     from("direct:request")
       .setHeader("backend", simple("{{redhat.backend}}"))
-      .to("log:DEBUG?showBody=true&showHeaders=true")
+      .to("log:DEBUG?showBody=true&showHeaders=false")
       .toD("http://${header.backend}?bridgeEndpoint=true&throwExceptionOnFailure=false")
-      .to("log:DEBUG?showBody=true&showHeaders=true");
+      .to("log:DEBUG?showBody=true&showHeaders=false");
       
 //      .choice()
 //        .when(simple("${header.CamelHttpResponseCode} != 201 && ${header.CamelHttpResponseCode} != 202"))
