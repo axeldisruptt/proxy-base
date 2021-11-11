@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    fabric8.io/git-commit: 459de79ebc6a72a586d30f83d9221c6878ab4664
+    fabric8.io/iconUrl: img/icons/camel.svg
+    fabric8.io/git-branch: get_postalcode
+  labels:
+    expose: "true"
+    app: i-ptg_get_pc
+    provider: fabric8
+    version: 0.1.0
+    group: com.redhat
+  name: i-ptg_get_pc
+spec:
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: i-ptg_get_pc
+    provider: fabric8
+    group: com.redhat
