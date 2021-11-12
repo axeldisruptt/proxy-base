@@ -19,12 +19,15 @@ public class Routes extends RouteBuilder {
     
     rest()
       .path("/").consumes("application/json").produces("application/json")
-        .put("/material-list")
+        .put("/get_ciudades")
 //          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:put-customer")
-        .post("/material-list")
+        .post("/get_ciudades")
 //          .type(Customer.class).outType(CustomerSuccess.class)
           .to("direct:post-customer");
+        .get("/get_ciudades")
+//          .type(Customer.class).outType(CustomerSuccess.class)
+          .to("direct:get-customer");
     
     from("direct:post-customer")
       .setHeader("HTTP_METHOD", constant("POST"))
@@ -32,9 +35,13 @@ public class Routes extends RouteBuilder {
     from("direct:put-customer")
       .setHeader("HTTP_METHOD", constant("PUT"))
       .to("direct:request");
+    from("direct:get-customer")
+      .setHeader("HTTP_METHOD", constant("PUT"))
+      .to("direct:request");
 
     from("direct:request")
       .setHeader("backend", simple("{{redhat.backend}}"))
+      .setHeader("", simple("*"))
       .to("log:DEBUG?showBody=true&showHeaders=true")
       .toD("http://${header.backend}?bridgeEndpoint=true&throwExceptionOnFailure=false")
       .to("log:DEBUG?showBody=true&showHeaders=true");
