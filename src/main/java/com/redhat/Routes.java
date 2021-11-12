@@ -62,8 +62,8 @@ public class Routes extends RouteBuilder {
           System.out.println("URI:" + url);
         }
       })
-      .setHeader("backend", simple("{{redhat.backend}}"))
-      .setHeader("", simple("*"))
+
+      .setHeader("Access-Control-Allow-Origin", simple("*"))
       .to("log:DEBUG?showBody=true&showHeaders=true")
       .to("https://netsuite")
       .streamCaching()
